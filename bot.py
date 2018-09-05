@@ -36,10 +36,14 @@ def get_last_chat_id_and_text(updates):
     chat_id = updates["result"][last_update]["message"]["chat"]["id"]
     return (text, chat_id)
 
-def send_message(text, chat_id):
-    #text = urllib.parse.quote_plus(text)
-    text = melhorcambio.main()
-    url = URL + "sendMessage?text={}&chat_id={}".format(text, chat_id)
+def send_message(text, chat_id, reply_markup=None):
+    if text == "Cotação":
+        text = melhorcambio.main()
+    else:
+        text = ""
+    url = URL + "sendMessage?text={}&chat_id={}&parse_mode=Markdown".format(text, chat_id)
+    if reply_markup:
+        url += "&reply_markup={}".format(reply_markup)
     get_url(url)
 
 def echo_all(updates):
@@ -47,9 +51,15 @@ def echo_all(updates):
         try:
             text = update["message"]["text"]
             chat = update["message"]["chat"]["id"]
-            send_message(text, chat)
+            keyboard = build_keyboard()
+            send_message(text, chat, keyboard)
         except Exception as e:
             print(e)
+
+def build_keyboard():
+    keyboard = [["Cotação"]]
+    reply_markup = {"keyboard": keyboard}
+    return json.dumps(reply_markup)
 
 def main():
     last_update_id = None
