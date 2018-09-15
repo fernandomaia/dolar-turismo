@@ -38,8 +38,7 @@ def get_last_chat_id_and_text(updates):
 
 def send_message(text, chat_id, reply_markup=None):
     if text == "/start":
-        text =
-        """Olá!
+        text = """ Olá!
         Este bot irá te ajudar a obter a cotação mais atualizada do dólar turismo.
         Para isso, basta enviar uma mensagem escrito Cotação e eu te retornarei essa informação.
         Por favor, entenda que este bot está em uma versão experimental, então existem muitas melhorias a serem feitas.
