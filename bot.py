@@ -76,6 +76,7 @@ def main():
         print("getting updates")
         updates = get_updates(last_update_id)
         if len(updates["result"]) > 0:
+            print("Update:" + str(updates))
             last_update_id = get_last_update_id(updates) + 1
             echo_all(updates)
         else:
