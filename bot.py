@@ -46,7 +46,7 @@ def send_message(text, chat_id, reply_markup=None):
             Espero que você aproveite!
 
             @fmaia"""
-    if text == "Cotação":
+    elif text == "Cotação":
         text = melhorcambio.main()
     else:
         text = ""
