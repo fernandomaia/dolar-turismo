@@ -3,9 +3,9 @@ import requests
 import time
 import urllib
 import melhorcambio
-import config
+import os
 
-URL = "https://api.telegram.org/bot{}/".format(config.TOKEN)
+URL = "https://api.telegram.org/bot{}/".format(os.environ['DOLAR_TURISMO_TOKEN'])
 
 def get_url(url):
     response = requests.get(url)
