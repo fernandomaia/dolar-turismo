@@ -6,7 +6,7 @@ def main():
     page_link = 'https://www.melhorcambio.com/cotacao/compra/dolar-turismo/sao-paulo'
     response = requests.get(page_link, timeout=5, headers=headers)
     page_content = BeautifulSoup(response.content,'html.parser')
-    currency = page_content.find('span',attrs={'content':'BRL'})
+    currency = page_content.find('span',string='R$ ')
     value = currency.find_next_sibling('span')
 
     return(currency.text + value.text)
