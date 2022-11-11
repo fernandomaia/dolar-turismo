@@ -1,0 +1,6 @@
+# fly.toml file generated for dolar-turismo on 2022-11-10T22:41:19-03:00
+
+app = "dolar-turismo"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
