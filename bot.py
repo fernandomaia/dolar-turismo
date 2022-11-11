@@ -75,12 +75,14 @@ def main():
     while True:
         print("getting updates")
         updates = get_updates(last_update_id)
-        if len(updates["result"]) > 0:
+
+        try:
             print("Update:" + str(updates))
             last_update_id = get_last_update_id(updates) + 1
             echo_all(updates)
-        else:
+        except:
             print('MainError:' + str(updates))
+
         time.sleep(0.5)
 
 if __name__ == '__main__':
