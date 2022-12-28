@@ -3,8 +3,13 @@ import requests
 import time
 import melhorcambio
 import os
+from dotenv import load_dotenv
 
-URL = "https://api.telegram.org/bot{}/".format(os.environ['DOLAR_TURISMO_TOKEN'])
+load_dotenv()
+
+TOKEN = os.getenv('DOLAR_TURISMO_TOKEN')
+
+URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
 def get_url(url):
     response = requests.get(url)
